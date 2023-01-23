@@ -21,11 +21,11 @@ if prompt and temperature and submit:
 	})
 
 # And then render each post, using some light Markdown
-posts_ref = db.collection("prompts")
-for doc in posts_ref.stream():
-	post = doc.to_dict()
-	title = post["prompt"]
-	url = post["temperature"]
+prompts_ref = db.collection("prompts")
+for doc in prompts_ref.stream():
+	prompt_doc = doc.to_dict()
+	prompt = prompt_doc["prompt"]
+	temperature = prompt_doc["temperature"]
 
 	st.subheader(f"Prompt: {prompt}")
 	st.write(f"Temperature: {temperature}")
